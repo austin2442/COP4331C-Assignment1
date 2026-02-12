@@ -20,6 +20,7 @@ Run `use DB` to select the database;
 
 Run the following command to create the tables:
 
+```SQL
 CREATE TABLE `COP4331`.`Users`
 (
   `ID` INT NOT NULL AUTO_INCREMENT ,
@@ -29,7 +30,8 @@ CREATE TABLE `COP4331`.`Users`
   `Password` VARCHAR(50) NOT NULL DEFAULT '' ,
   PRIMARY KEY (`ID`)
 ) ENGINE = InnoDB;
-
+```
+```SQL
 CREATE TABLE `COP4331`.`Colors`
 (
   `ID` INT NOT NULL AUTO_INCREMENT ,
@@ -37,7 +39,7 @@ CREATE TABLE `COP4331`.`Colors`
   `UserID` INT NOT NULL DEFAULT '0' ,
   PRIMARY KEY (`ID`)
 ) ENGINE = InnoDB;
-
+```
 
 Run this command to create the user for the DB
 create user 'username' identified by 'password'
