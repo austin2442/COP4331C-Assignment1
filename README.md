@@ -55,4 +55,6 @@ Go into each API file and update the connection likes that start with `$conn` to
 
 Assuming your project is in a directory where Apache is looking for it (Default is /var/www/html) then you will be able to access the application by typing your servers IP into a web browser. 
 
+## Assumptions and Lmitation
+This application assumes you have a Linux computer with Apache Web Server Installed
 
