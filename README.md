@@ -51,6 +51,10 @@ grant all privileges on DB.* to 'username'@'%';
 
 Go into each API file and update the connection likes that start with `$conn` to include your specific database login information.
 
+## SETUP JS
+
+Go into js/code.js and update the first line to include your specific URL.
+
 ## Access Web APP
 
 Assuming your project is in a directory where Apache is looking for it (Default is /var/www/html) then you will be able to access the application by typing your servers IP into a web browser. 

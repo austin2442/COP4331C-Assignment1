@@ -1,4 +1,4 @@
-const urlBase = 'http://colorslab.xyz/LAMPAPI';
+const urlBase = 'URLHERE/LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
