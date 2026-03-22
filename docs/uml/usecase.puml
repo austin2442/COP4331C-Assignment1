@@ -1,0 +1,38 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam actor {
+    BackgroundColor White
+    BorderColor Black
+}
+skinparam usecase {
+    BackgroundColor White
+    BorderColor Black
+}
+
+actor "Web User" as User
+
+rectangle "Color Management System" {
+  usecase "Authenticate (Log In)" as Login
+  usecase "Add a New Color" as AddColor
+  usecase "Search Saved Colors" as SearchColor
+  usecase "End Session (Log Out)" as Logout
+}
+
+' Define the interactions between the actor and the system
+User --> Login
+User --> AddColor
+User --> SearchColor
+User --> Logout
+
+' Use notes to capture underlying business rules without cluttering the diagram with logic
+note right of AddColor
+  Requires an active
+  user session via cookies.
+end note
+
+note right of SearchColor
+  Only retrieves records linked 
+  to the user's specific ID.
+end note
+@enduml

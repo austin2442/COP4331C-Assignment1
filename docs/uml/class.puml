@@ -1,0 +1,31 @@
+@startuml
+skinparam class {
+    BackgroundColor White
+    ArrowColor Black
+    BorderColor Black
+    RoundCorner 10
+}
+
+title Colors Lab Class Diagram
+
+class User {
+    + ID : Integer
+    + FirstName : String
+    + LastName : String
+    + Login : String
+    - Password : String
+    ==
+    + authenticate(username, password) : Boolean
+    + addColor(colorName : String)
+    + searchColors(query : String) : List<Color>
+}
+
+class Color {
+    + ID : Integer
+    + Name : String
+}
+
+' Relationship: A User owns a collection of Colors
+User "1" *-- "0..*" Color : owns / manages >
+
+@enduml

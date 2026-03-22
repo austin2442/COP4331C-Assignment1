@@ -1,0 +1,51 @@
+@startuml
+skinparam ActivityBackgroundColor White
+skinparam ActivityBorderColor Black
+skinparam ArrowColor Black
+skinparam ActivityDiamondBackgroundColor White
+
+title Activity Diagram: User Journey & Color Management
+
+start
+
+:User navigates to application;
+
+repeat :Display Login Screen;
+  :User enters Username and Password;
+  :System validates credentials;
+  
+  if (Are credentials valid?) then (Yes)
+    :Initialize User Session;
+    break
+  else (No)
+    :Display "User/Password incorrect" Error;
+  endif
+repeat while
+
+repeat :Display Color Management Dashboard;
+  :User selects an action;
+  
+  if (Action selected?) then (Add Color)
+    :User inputs a new Color Name;
+    :System associates Color with User's profile;
+    :Display "Color has been added" Success Message;
+    
+  elseif (Search Color)
+    :User inputs a search query;
+    :System searches User's saved colors;
+    
+    if (Matches found?) then (Yes)
+      :Display list of matching colors;
+    else (No)
+      :Display "No Records Found" Message;
+    endif
+    
+  else (Log Out)
+    :System clears User Session (Cookies);
+    :Redirect to Login Screen;
+    stop
+  endif
+  
+repeat while
+
+@enduml
