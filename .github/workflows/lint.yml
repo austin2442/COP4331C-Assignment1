@@ -1,0 +1,27 @@
+name: Automated Linting
+
+# Trigger the workflow on every push and pull request
+on: [push, pull_request]
+
+jobs:
+  lint-codebase:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the code from the repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Step 2: Run the Super-Linter
+      - name: Lint Code Base
+        uses: github/super-linter@v5
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_HTML: true
+          VALIDATE_CSS: true
+          VALIDATE_JAVASCRIPT_ES: true
+          # Ignoring the md5.js file since it's an external library and will cause massive failures
+          FILTER_REGEX_EXCLUDE: .*md5\.js.*
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
