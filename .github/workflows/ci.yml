@@ -42,12 +42,12 @@ jobs:
         php-version: '8.2'
         extensions: mysqli
 
+
     - name: Initialize Database
       run: mysql -h 127.0.0.1 -u root -proot < tests/setup.sql
 
-    - name: Start PHP Development Server
-      # Runs the built-in PHP server in the background on port 8000
-      run: php -S 127.0.0.1:8000 -t LAMPAPI/ &
-
-    - name: Run Tests
-      run: npm test
+    - name: Start Server and Run Tests
+      run: |
+        php -S 127.0.0.1:8000 -t LAMPAPI/ &
+        sleep 2
+        npm test
