@@ -25,4 +25,4 @@ describe('LAMP API Integration Tests', () => {
         expect(response.data.error).toBe("");
         expect(response.data.firstName).toBe("Test");
     });
-});`
+});
