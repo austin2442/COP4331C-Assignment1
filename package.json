@@ -1,0 +1,29 @@
+{
+  "name": "assignment5",
+  "version": "1.0.0",
+  "description": "This application allows a user to create an account and login. Once they are logged in they are able to either add a color to their account, or search for a color they already have added to their account.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/austin2442/COP4331C-Assignment1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/austin2442/COP4331C-Assignment1/issues"
+  },
+  "homepage": "https://github.com/austin2442/COP4331C-Assignment1#readme",
+  "devDependencies": {
+    "axios": "^1.15.2",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0"
+  }
+}

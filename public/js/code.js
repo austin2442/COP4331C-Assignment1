@@ -183,3 +183,16 @@ function searchColor()
 	}
 	
 }
+
+// Pure function to validate color input
+function validateColorInput(color) {
+    if (!color || color.trim() === "") return false;
+    const regex = /^[a-zA-Z\s]+$/; // Only accepts letters and spaces
+    return regex.test(color);
+}
+
+// Export conditionally for the Node.js testing environment
+// This prevents errors in the browser where 'module' is undefined
+if (typeof module === 'object' && module.exports) {
+    module.exports = { validateColorInput };
+}

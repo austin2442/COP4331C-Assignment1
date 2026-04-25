@@ -1,0 +1,53 @@
+name: LAMP CI Pipeline
+
+on:
+  push:
+    branches: [ main, assignment5-tests ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    # Spin up a MySQL container for the integration tests
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install Node Dependencies
+      run: npm install
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: mysqli
+
+    - name: Initialize Database
+      run: mysql -h 127.0.0.1 -u root -proot < tests/setup.sql
+
+    - name: Start PHP Development Server
+      # Runs the built-in PHP server in the background on port 8000
+      run: php -S 127.0.0.1:8000 -t LAMPAPI/ &
+
+    - name: Run Tests
+      run: npm test
