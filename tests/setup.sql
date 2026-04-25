@@ -1,11 +1,11 @@
 CREATE DATABASE IF NOT EXISTS `database`;
 USE `database`;
 
-CREATE USER IF NOT EXISTS 'username'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON `database`.* TO 'username'@'localhost';
-CREATE USER IF NOT EXISTS 'username'@'127.0.0.1' IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON `database`.* TO 'username'@'127.0.0.1';
+-- Use the '%' wildcard to allow connections from the Docker network gateway
+CREATE USER IF NOT EXISTS 'username'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON `database`.* TO 'username'@'%';
 FLUSH PRIVILEGES;
+
 
 CREATE TABLE IF NOT EXISTS Users (
   ID INT NOT NULL AUTO_INCREMENT,
